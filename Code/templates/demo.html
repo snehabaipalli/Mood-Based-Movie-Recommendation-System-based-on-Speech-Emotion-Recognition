@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<select id="fruit-category">
+  <option value="apples">Apples</option>
+  <option value="bananas">Bananas</option>
+  <option value="oranges">Oranges</option>
+  </select>
+  <div id="fruits-container"></div>
+   <script type="text/javascript">
+   	const fruitsData = {
+  apples: [
+    { name: "Granny Smith", imgSrc: "granny-smith.jpg", description: "A green apple that is tart and crisp." },
+    { name: "Honeycrisp", imgSrc: "honeycrisp.jpg", description: "A sweet and crunchy apple with a thin skin." },
+    { name: "Fuji", imgSrc: "fuji.jpg", description: "A juicy and sweet apple with a crisp texture." }
+  ],
+  bananas: [
+    { name: "Cavendish", imgSrc: "cavendish.jpg", description: "A sweet and creamy banana with a firm texture." },
+    { name: "Red Banana", imgSrc: "red-banana.jpg", description: "A sweet and aromatic banana with a red skin." },
+    { name: "Plantain", imgSrc: "plantain.jpg", description: "A starchy and savory banana that is often cooked." }
+  ],
+  oranges: [
+    { name: "Navel", imgSrc: "navel.jpg", description: "A large and juicy orange with a thick skin." },
+    { name: "Blood Orange", imgSrc: "blood-orange.jpg", description: "An orange with a dark red flesh and a sweet flavor." },
+    { name: "Clementine", imgSrc: "clementine.jpg", description: "A small and sweet orange with a thin skin." }
+  ]
+};
+
+// Define the function that will be called when the dropdown value changes
+function onFruitCategoryChanged() {
+  const fruitCategory = document.getElementById("fruit-category").value;
+  const fruits = fruitsData[fruitCategory];
+  const fruitsContainer = document.getElementById("fruits-container");
+  fruitsContainer.innerHTML = "";
+  
+  // Create a container for each fruit
+  fruits.forEach(fruit => {
+    const fruitContainer = document.createElement("div");
+    fruitContainer.classList.add("fruit-container");
+    
+    // Create an image element for the fruit
+    const fruitImg = document.createElement("img");
+    fruitImg.src = fruit.imgSrc;
+    fruitImg.alt = fruit.name;
+    fruitImg.classList.add("fruit-img");
+    fruitContainer.appendChild(fruitImg);
+    
+    // Create a description element for the fruit
+    const fruitDescription = document.createElement("p");
+    fruitDescription.textContent = fruit.description;
+    fruitDescription.classList.add("fruit-description");
+    fruitContainer.appendChild(fruitDescription);
+    
+    // Add the fruit container to the fruits container
+    fruitsContainer.appendChild(fruitContainer);
+  });
+}
+
+// Add an event listener to the dropdown element
+document.getElementById("fruit-category").addEventListener("change", onFruitCategoryChanged);
+
+
+	
+   </script>
+
+</body>
+</html>

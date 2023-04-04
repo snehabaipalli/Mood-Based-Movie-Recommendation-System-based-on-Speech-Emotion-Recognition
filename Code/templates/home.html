@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Recommendation System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+</head>
+
+<body id="content" style="font-family: 'Noto Sans JP', sans-serif;">
+
+	<div class="ml-container" style="display: block;">
+    <center><h1> Movie Recommendation System</h1></center>
+    <br><br>
+    <div>
+    <label for="avatar">Choose a sound file:</label><br><br>
+    <form action="/predict" method="post" enctype=""multipart/form-data>
+    <input type="file" id="avatar" name="file" accept="image/png, image/jpeg"/>
+    <div class="form-group" style="text-align: center;">
+      <button type="submit">Predict</button>
+    </form>
+    </div>
+	</div>
+
+  <div class="row">
+    {% if prediction %}
+    <h1 class="text-warning">{{prediction}}</h1>
+    {% endif %}
+
+  </div>
+
+  <div id="loader" class="text-center">
+  </div>
+  
+  <div class="fail">
+    <center><h3></h3></center>
+  </div>
+
+	<div class="results">
+    <center>
+      <h2 id="name" class="text-uppercase"></h2>
+    </center>
+	</div>
+	
+	
+	
+	<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='autocomplete.js')}}"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='recommend.js')}}"></script>
+
+</body>
+</html>
